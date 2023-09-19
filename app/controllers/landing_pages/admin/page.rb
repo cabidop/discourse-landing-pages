@@ -52,6 +52,14 @@ class LandingPages::PageController < LandingPages::AdminController
     exporter.cleanup!
   end
 
+  def search
+    params.each do |key, value|
+      if LandingPages::Page.pages_attrs.include?(key)
+        return render_page(LandingPages::Page.find_by(key, value))
+      end
+    end
+  end
+
   def upload
     importer = LandingPages::Importer.new(:zip, bundle: params[:page])
     importer.perform!
@@ -69,7 +77,17 @@ class LandingPages::PageController < LandingPages::AdminController
   def page_params
     params
       .require(:page)
-      .permit(:name, :path, :parent_id, :category_id, :theme_id, :body, :menu, group_ids: [])
+      .permit(
+        :name,
+        :path,
+        :parent_id,
+        :category_id,
+        :theme_id,
+        :body,
+        :menu,
+        :inline,
+        group_ids: [],
+      )
       .to_h
   end
 

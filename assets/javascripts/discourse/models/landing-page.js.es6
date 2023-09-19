@@ -25,6 +25,7 @@ const LandingPage = EmberObject.extend({
       group_ids: this.group_ids,
       body: this.body,
       menu: this.menu,
+      inline: this.inline,
     };
 
     return ajax(path, {
@@ -58,6 +59,10 @@ LandingPage.reopenClass({
 
   find(pageId) {
     return ajax(`${basePath}/${pageId}`).catch(popupAjaxError);
+  },
+
+  findBy(key, value) {
+    return ajax(`${basePath}/search?${key}=${value}`).catch(popupAjaxError);
   },
 
   create(props = {}) {

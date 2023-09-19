@@ -13,7 +13,7 @@ class LandingPages::Page
   end
 
   def self.pages_attrs
-    %w[name path parent_id remote email theme_id group_ids category_id].freeze
+    %w[name path parent_id remote email theme_id group_ids category_id inline].freeze
   end
 
   def self.assets_attrs
@@ -40,6 +40,7 @@ class LandingPages::Page
         value = value.dasherize if "path" == attr
         value = value.to_i if %w[category_id theme_id].include?(attr)
         value = value.map(&:to_i) if "group_ids" == attr
+        value = ActiveModel::Type::Boolean.new.cast(value) if "inline" == attr
       end
 
       send("#{attr}=", value)
@@ -200,6 +201,10 @@ class LandingPages::Page
 
   def self.path_exists?(path, page_id)
     self.exists?(path, attr: "path", exclude_id: page_id) || self.application_paths.include?(path)
+  end
+
+  def self.path_inline?(path)
+    PluginStoreRow.where("#{page_query("path")} AND value::json->>'inline' = 'true'", path).exists?
   end
 
   def self.application_paths

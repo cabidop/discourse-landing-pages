@@ -1,8 +1,12 @@
 # frozen_string_literal: true
+
 LandingPages::Engine.routes.draw do
   resources :page, constraints: AdminConstraint.new do
     member { get "export" => "page#export" }
-    collection { post "upload" => "page#upload" }
+    collection do
+      get "search" => "page#search"
+      post "upload" => "page#upload"
+    end
   end
 
   resource :remote, constraints: AdminConstraint.new do
@@ -23,6 +27,10 @@ end
 Discourse::Application.routes.prepend do
   mount ::LandingPages::Engine, at: "landing"
   get "/admin/plugins/landing-pages" => "admin/plugins#index", :constraints => AdminConstraint.new
+  get "/:path" => "landing_pages/inline#show", :constraints => InlinePageConstraint.new
   get "/:path" => "landing_pages/landing#show", :constraints => LandingPageConstraint.new
+  get "/:path/:param" => "landing_pages/inline#show", :constraints => InlinePageConstraint.new
   get "/:path/:param" => "landing_pages/landing#show", :constraints => LandingPageConstraint.new
+  get "/" => "landing_pages/inline#show", :constraints => InlinePageConstraint.new
+  get "/" => "landing_pages/landing#show", :constraints => LandingPageConstraint.new
 end

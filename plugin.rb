@@ -36,6 +36,7 @@ after_initialize do
     ../lib/landing_pages/importer.rb
     ../lib/landing_pages/cache.rb
     ../lib/landing_email_renderer.rb
+    ../lib/inline_page_constraint.rb
     ../lib/landing_page_constraint.rb
     ../config/routes.rb
     ../app/controllers/landing_pages/concerns/landing_helper.rb
@@ -44,6 +45,7 @@ after_initialize do
     ../app/serializers/landing_pages/menu.rb
     ../app/serializers/landing_pages/remote.rb
     ../app/serializers/landing_pages/global.rb
+    ../app/controllers/landing_pages/inline.rb
     ../app/controllers/landing_pages/landing.rb
     ../app/controllers/landing_pages/admin/admin.rb
     ../app/controllers/landing_pages/admin/page.rb

@@ -5,3 +5,25 @@ plugins:
     default: "jpg|jpeg|png|woff|woff2|svg|eot|ttf|otf|gif|js|json"
     type: list
     list_type: compact
+
+basic:
+  top_menu:
+    client: true
+    refresh: true
+    type: list
+    list_type: simple
+    default: "latest|new|unread|top|categories"
+    regex: "latest"
+    regex_error: "site_settings.errors.must_include_latest"
+    validator: RegexPresenceValidator
+    allow_any: true
+    choices:
+      - latest
+      - new
+      - unread
+      - unseen
+      - top
+      - categories
+      - read
+      - posted
+      - bookmarks
