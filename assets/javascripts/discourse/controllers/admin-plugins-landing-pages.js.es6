@@ -247,10 +247,15 @@ export default Controller.extend({
       this.set("pages", pages);
     },
 
+    updateMenus(menus) {
+      this.set("menus", menus);
+    },
+
     toggleShowPages() {
       this.setProperties({
         showPages: true,
         showGlobal: false,
+        showMenus: false,
       });
     },
 
@@ -258,6 +263,17 @@ export default Controller.extend({
       this.setProperties({
         showPages: false,
         showGlobal: true,
+        showMenus: false,
+        page: null,
+        currentPage: null,
+      });
+    },
+
+    toggleShowMenus() {
+      this.setProperties({
+        showPages: false,
+        showGlobal: false,
+        showMenus: true,
         page: null,
         currentPage: null,
       });

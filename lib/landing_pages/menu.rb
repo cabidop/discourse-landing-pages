@@ -27,9 +27,6 @@ class LandingPages::Menu
       value = data[attr]
 
       if value.present?
-        value = value.parameterize.underscore if attr === "name"
-        value = value if attr === "items"
-
         send("#{attr}=", value)
       end
     end
@@ -97,8 +94,8 @@ class LandingPages::Menu
     PluginStoreRow.exists?("plugin_name = '#{LandingPages::PLUGIN_NAME}' AND key = 'menu_id'")
   end
 
-  def self.destroy(menu_id)
-    PluginStore.remove(LandingPages::PLUGIN_NAME, menu_id)
+  def destroy
+    PluginStore.remove(LandingPages::PLUGIN_NAME, id)
   end
 
   def self.all

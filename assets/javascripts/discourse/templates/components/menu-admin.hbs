@@ -1,0 +1,79 @@
+<div class="page-controls">
+  <div class="page-list-container">
+    <ComboBox
+      @value={{menu.id}}
+      @content={{menus}}
+      @onChange={{action "changeMenu"}}
+      class="menu-select"
+      @options={{hash none="admin.landing_pages.menu.select"}}
+    />
+
+    <DButton
+      @action={{action "createMenu"}}
+      @label="admin.landing_pages.create"
+      class="menu-create"
+      @icon="plus"
+    />
+  </div>
+</div>
+
+{{#if menu}}
+  <div class="page-header">
+    <div class="page-name">
+      <span>{{menuTitle}}</span>
+    </div>
+
+    <div class="buttons">
+      {{#if resultMessage}}
+        <span class="{{resultMessage.style}}">
+          {{d-icon resultMessage.icon}} {{{resultMessage.text}}}
+        </span>
+      {{/if}}
+
+      {{conditional-loading-spinner condition=updatingMenu size="small"}}
+
+      {{#if menu.id}}
+        <DButton
+          @action={{action "destroyMenu"}}
+          @label="admin.landing_pages.destroy"
+          @disabled={{updatingMenu}}
+          @icon="times"
+        />
+      {{/if}}
+
+      <DButton
+        @action={{action "saveMenu"}}
+        @label="admin.landing_pages.save"
+        class="btn-primary"
+        @disabled={{updatingMenu}}
+        @icon="save"
+      />
+    </div>
+  </div>
+
+  <div class="page-menu">
+    <div class="control-group">
+      <label class="control-label">
+        {{i18n "admin.landing_pages.menu.name.label"}}
+      </label>
+
+      <Input @value={{menu.name}} class="page-name" />
+
+      <div class="control-instructions">
+        {{i18n "admin.landing_pages.menu.name.instructions"}}
+      </div>
+    </div>
+
+    <div class="menu-editor">
+      <label class="control-label">
+        {{i18n "admin.landing_pages.menu.items.label"}}
+      </label>
+
+      <div class="control-instructions">
+        {{i18n "admin.landing_pages.menu.items.instructions"}}
+      </div>
+
+      <JsonEditor @content={{menu.json}} />
+    </div>
+  </div>
+{{/if}}
