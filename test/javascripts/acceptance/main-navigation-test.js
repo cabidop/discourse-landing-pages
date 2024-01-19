@@ -16,7 +16,19 @@ acceptance("Main | Navigation", function (needs) {
     await visit("/admin/plugins/landing-pages");
     await click("button.pages");
 
-    assert.ok(exists(".page-list-container"));
+    assert.ok(exists(".page-select"));
+    assert.notOk(exists(".menu-select"));
+    assert.notOk(exists(".page-global"));
+    assert.notOk(exists(".d-modal.update-pages-remote"));
+    assert.notOk(exists(".d-modal.import-pages"));
+  });
+
+  test("Displays only the menus section when selected", async function (assert) {
+    await visit("/admin/plugins/landing-pages");
+    await click("button.menus");
+
+    assert.notOk(exists(".page-select"));
+    assert.ok(exists(".menu-select"));
     assert.notOk(exists(".page-global"));
     assert.notOk(exists(".d-modal.update-pages-remote"));
     assert.notOk(exists(".d-modal.import-pages"));
@@ -26,7 +38,8 @@ acceptance("Main | Navigation", function (needs) {
     await visit("/admin/plugins/landing-pages");
     await click("button.global");
 
-    assert.notOk(exists(".page-list-container"));
+    assert.notOk(exists(".page-select"));
+    assert.notOk(exists(".menu-select"));
     assert.ok(exists(".page-global"));
     assert.notOk(exists(".d-modal.update-pages-remote"));
     assert.notOk(exists(".d-modal.import-pages"));
@@ -36,7 +49,8 @@ acceptance("Main | Navigation", function (needs) {
     await visit("/admin/plugins/landing-pages");
     await click("button.remote");
 
-    assert.ok(exists(".page-list-container"));
+    assert.ok(exists(".page-select"));
+    assert.notOk(exists(".menu-select"));
     assert.notOk(exists(".page-global"));
     assert.ok(exists(".d-modal.update-pages-remote"));
     assert.notOk(exists(".d-modal.import-pages"));
@@ -46,7 +60,8 @@ acceptance("Main | Navigation", function (needs) {
     await visit("/admin/plugins/landing-pages");
     await click("button.import");
 
-    assert.ok(exists(".page-list-container"));
+    assert.ok(exists(".page-select"));
+    assert.notOk(exists(".menu-select"));
     assert.notOk(exists(".page-global"));
     assert.notOk(exists(".d-modal.update-pages-remote"));
     assert.ok(exists(".d-modal.import-pages"));

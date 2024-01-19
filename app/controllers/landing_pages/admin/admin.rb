@@ -10,6 +10,10 @@ class LandingPages::AdminController < ::Admin::AdminController
     @page = LandingPages::Page.find(params[:id])
   end
 
+  def find_menu
+    @menu = LandingPages::Menu.find(params[:id])
+  end
+
   def serialzed_pages
     ActiveModel::ArraySerializer.new(
       LandingPages::Page.all,
@@ -25,9 +29,13 @@ class LandingPages::AdminController < ::Admin::AdminController
   def serialize_menus
     ActiveModel::ArraySerializer.new(
       LandingPages::Menu.all,
-      each_serializer: LandingPages::MenuSerializer,
+      each_serializer: LandingPages::BasicMenuSerializer,
       root: false,
     )
+  end
+
+  def serialize_menu(menu)
+    LandingPages::MenuSerializer.new(menu, root: false)
   end
 
   def serialized_remote
@@ -45,6 +53,16 @@ class LandingPages::AdminController < ::Admin::AdminController
       render_json_dump(json)
     else
       render_json_error(page)
+    end
+  end
+
+  def render_menu(menu, include_menus: false)
+    if menu.valid?
+      json = { menu: serialize_menu(menu) }
+      json[:menus] = serialize_menus if include_menus
+      render_json_dump(json)
+    else
+      render_json_error(menu)
     end
   end
 end

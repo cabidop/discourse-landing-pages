@@ -227,6 +227,7 @@ export default Controller.extend({
       this.setProperties({
         showPages: true,
         showGlobal: false,
+        showMenus: false,
       });
     },
 
@@ -234,6 +235,15 @@ export default Controller.extend({
       this.setProperties({
         showPages: false,
         showGlobal: true,
+        showMenus: false,
+      });
+    },
+
+    toggleShowMenus() {
+      this.setProperties({
+        showPages: false,
+        showGlobal: false,
+        showMenus: true,
       });
     },
   },

@@ -16,6 +16,7 @@ en:
         page:
           label: "Pages"
           description: "Manage all landing pages"
+          create: "Create"
           select: "Select page…"
           export: "Export"
           remote: 
@@ -110,3 +111,14 @@ en:
             label: "Footer"
             description: "Add a footer to all pages by defining its JSON attributes"
             error: "Error found while updating the footer: «%{error}»"
+
+        menu:
+          label: "Menus"
+          description: "Manage all navigation links"
+          select: "Select menu…"
+          name:
+            label: "Name"
+            instructions: "Identifies the menu in the pages section"
+          items:
+            label: "Items"
+            instructions: "JSON object containing every menu item"

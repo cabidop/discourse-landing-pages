@@ -15,6 +15,8 @@ LandingPages::Engine.routes.draw do
 
   resource :global, constraints: AdminConstraint.new
 
+  resources :menus, constraints: AdminConstraint.new
+
   post "contact" => "landing#contact"
   post "subscription" => "landing#subscription"
   get "topic-list" => "landing#topic_list"
