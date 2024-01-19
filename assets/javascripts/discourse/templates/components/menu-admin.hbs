@@ -1,0 +1,45 @@
+<div class="page-controls">
+  <div class="page-list-container">
+    <ComboBox
+      @value={{menu.id}}
+      @content={{menus}}
+      @onChange={{action "changeMenu"}}
+      class="menu-select"
+      @options={{hash none="admin.landing_pages.menu.select"}}
+    />
+  </div>
+</div>
+
+{{#if menu}}
+  <div class="page-header">
+    <div class="page-name">
+      <span>{{menuTitle}}</span>
+    </div>
+  </div>
+
+  <div class="page-menu">
+    <div class="control-group">
+      <label class="control-label">
+        {{i18n "admin.landing_pages.menu.name.label"}}
+      </label>
+
+      <Input @value={{menu.name}} class="page-name" disabled />
+
+      <div class="control-instructions">
+        {{i18n "admin.landing_pages.menu.name.instructions"}}
+      </div>
+    </div>
+
+    <div class="menu-editor">
+      <label class="control-label">
+        {{i18n "admin.landing_pages.menu.items.label"}}
+      </label>
+
+      <div class="control-instructions">
+        {{i18n "admin.landing_pages.menu.items.instructions"}}
+      </div>
+
+      <JsonEditor @content={{menu.json}} @disabled={{true}} />
+    </div>
+  </div>
+{{/if}}
