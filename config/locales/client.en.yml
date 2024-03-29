@@ -122,3 +122,4 @@ en:
           items:
             label: "Items"
             instructions: "JSON object containing every menu item"
+            error: "Error found while updating the items: «%{error}»"

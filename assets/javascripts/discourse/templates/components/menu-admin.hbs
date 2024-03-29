@@ -15,6 +15,25 @@
     <div class="page-name">
       <span>{{menuTitle}}</span>
     </div>
+
+    <div class="buttons">
+      {{#if resultMessage}}
+        <span class="{{resultMessage.style}}">
+          {{d-icon resultMessage.icon}}
+          {{{resultMessage.text}}}
+        </span>
+      {{/if}}
+
+      {{conditional-loading-spinner condition=updatingMenu size="small"}}
+
+      <DButton
+        @action={{action "saveMenu"}}
+        @label="admin.landing_pages.save"
+        class="btn-primary"
+        @disabled={{updatingMenu}}
+        @icon="save"
+      />
+    </div>
   </div>
 
   <div class="page-menu">
@@ -23,7 +42,7 @@
         {{i18n "admin.landing_pages.menu.name.label"}}
       </label>
 
-      <Input @value={{menu.name}} class="page-name" disabled />
+      <Input @value={{menu.name}} class="page-name" />
 
       <div class="control-instructions">
         {{i18n "admin.landing_pages.menu.name.instructions"}}
@@ -39,7 +58,13 @@
         {{i18n "admin.landing_pages.menu.items.instructions"}}
       </div>
 
-      <JsonEditor @content={{menu.json}} @disabled={{true}} />
+      <JsonEditor @content={{menu.json}} />
+      {{#if jsonError}}
+        <span class="validation-error">
+          {{d-icon "times"}}
+          {{i18n "admin.landing_pages.menu.items.error" error=jsonError}}
+        </span>
+      {{/if}}
     </div>
   </div>
 {{/if}}

@@ -27,9 +27,6 @@ class LandingPages::Menu
       value = data[attr]
 
       if value.present?
-        value = value.parameterize.underscore if attr === "name"
-        value = value if attr === "items"
-
         send("#{attr}=", value)
       end
     end
@@ -53,7 +50,7 @@ class LandingPages::Menu
   end
 
   def validate
-    %w[name items].each do |attr|
+    LandingPages::Menu.writable_attrs.each.each do |attr|
       add_error(I18n.t("landing_pages.error.attr_required", attr: attr)) if send(attr).blank?
     end
   end
