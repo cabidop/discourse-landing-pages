@@ -26,6 +26,10 @@ class LandingPages::LandingController < ::ActionController::Base
 
   def show
     if @page.present?
+      if !SiteSetting.allow_user_locale
+        I18n.locale = SiteSetting.default_locale
+      end
+
       @page_title = SiteSetting.title + " | #{@page.name}"
       @classes = @page.name.parameterize
       @theme_id = @page.theme_id
