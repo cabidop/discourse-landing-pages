@@ -1,10 +1,10 @@
 import Component from "@ember/component";
+import { action } from "@ember/object";
+import { and, or } from "@ember/object/computed";
 import { ajax } from "discourse/lib/ajax";
 import { popupAjaxError } from "discourse/lib/ajax-error";
-import discourseComputed, { observes } from "discourse-common/utils/decorators";
 import { bufferedProperty } from "discourse/mixins/buffered-content";
-import { and, or } from "@ember/object/computed";
-import { action } from "@ember/object";
+import discourseComputed, { observes } from "discourse-common/utils/decorators";
 
 export default Component.extend(bufferedProperty("model.remote"), {
   keyGenUrl: "/admin/themes/generate_key_pair",

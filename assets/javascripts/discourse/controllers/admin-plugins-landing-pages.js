@@ -1,12 +1,12 @@
+import Controller from "@ember/controller";
+import { gt, not, notEmpty, or } from "@ember/object/computed";
+import { inject as service } from "@ember/service";
+import { ajax } from "discourse/lib/ajax";
+import { extractError } from "discourse/lib/ajax-error";
+import discourseComputed from "discourse-common/utils/decorators";
+import I18n from "I18n";
 import ImportPages from "../components/modal/import-pages";
 import UpdatePagesRemote from "../components/modal/update-pages-remote";
-import Controller from "@ember/controller";
-import { inject as service } from "@ember/service";
-import discourseComputed from "discourse-common/utils/decorators";
-import { gt, not, notEmpty, or } from "@ember/object/computed";
-import { extractError } from "discourse/lib/ajax-error";
-import { ajax } from "discourse/lib/ajax";
-import I18n from "I18n";
 
 const statusIcons = {
   error: "exclamation-triangle",

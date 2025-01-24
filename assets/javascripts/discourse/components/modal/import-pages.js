@@ -1,15 +1,15 @@
 import Component from "@ember/component";
-import LandingPage from "../../models/landing-page";
-import { popupAjaxError } from "discourse/lib/ajax-error";
 import { action } from "@ember/object";
 import { service } from "@ember/service";
+import { popupAjaxError } from "discourse/lib/ajax-error";
+import LandingPage from "../../models/landing-page";
 
 export default Component.extend({
   dialog: service(),
 
   @action
   uploadFile() {
-    this.set("pageFile", $("#file-input")[0].files[0]);
+    this.set("pageFile", document.getElementById("file-input").files[0]);
   },
 
   @action

@@ -1,11 +1,11 @@
 import Component from "@ember/component";
 import { action } from "@ember/object";
-import discourseComputed from "discourse-common/utils/decorators";
 import { notEmpty, or } from "@ember/object/computed";
 import { dasherize } from "@ember/string";
-import LandingPage from "../models/landing-page";
 import { extractError } from "discourse/lib/ajax-error";
+import discourseComputed from "discourse-common/utils/decorators";
 import I18n from "I18n";
+import LandingPage from "../models/landing-page";
 
 const location = window.location;
 const port = location.port ? ":" + location.port : "";

@@ -7,6 +7,7 @@ export default Component.extend({
   updatingGlobal: or("destroyingGlobal", "savingGlobal"),
 
   didReceiveAttrs() {
+    this._super();
     this.initializeProps();
   },
 

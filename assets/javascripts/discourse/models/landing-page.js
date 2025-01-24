@@ -1,7 +1,7 @@
 import EmberObject from "@ember/object";
 import { ajax } from "discourse/lib/ajax";
-import { url } from "discourse/lib/computed";
 import { popupAjaxError } from "discourse/lib/ajax-error";
+import { url } from "discourse/lib/computed";
 
 const basePath = "/landing/page";
 

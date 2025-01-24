@@ -1,9 +1,9 @@
-import LandingPage from "../models/landing-page";
-import { ajax } from "discourse/lib/ajax";
-import DiscourseRoute from "discourse/routes/discourse";
-import Group from "discourse/models/group";
 import EmberObject, { set } from "@ember/object";
 import { all } from "rsvp";
+import { ajax } from "discourse/lib/ajax";
+import Group from "discourse/models/group";
+import DiscourseRoute from "discourse/routes/discourse";
+import LandingPage from "../models/landing-page";
 
 export default DiscourseRoute.extend({
   model() {

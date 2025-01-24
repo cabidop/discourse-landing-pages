@@ -1,16 +1,16 @@
 import {
-  acceptance,
-  exists,
-  query,
-} from "discourse/tests/helpers/qunit-helpers";
-import { test } from "qunit";
-import {
   click,
   fillIn,
   triggerEvent,
   visit,
   waitFor,
 } from "@ember/test-helpers";
+import { test } from "qunit";
+import {
+  acceptance,
+  exists,
+  query,
+} from "discourse/tests/helpers/qunit-helpers";
 
 acceptance("Global | JSON editor", function (needs) {
   needs.user();
