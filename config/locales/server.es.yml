@@ -36,3 +36,5 @@ es:
   site_settings:
     landing_contact_email: "Destinatario del formulario de contacto en las páginas de aterrizaje."
     landing_authorized_extensions: "Tipos de archivo permitidos en las páginas de aterrizaje."
+    landing_page_as_home_enabled: "Usar una página de aterrizaje como la página principal del sitio."
+    landing_page_as_home_path: "Ruta de la página de aterrizaje que usar como página principal."

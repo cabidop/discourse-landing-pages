@@ -36,3 +36,5 @@ pt:
   site_settings:
     landing_contact_email: "E-mail para enviar contatos da página de destino."
     landing_authorized_extensions: "Extensões de arquivos autorizadas para páginas de destino."
+    landing_page_as_home_enabled: "Use uma página de destino como página inicial do site."
+    landing_page_as_home_path: "Caminho para a página de destino para usar como página inicial."

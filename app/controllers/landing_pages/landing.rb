@@ -118,6 +118,8 @@ class LandingPages::LandingController < ::ActionController::Base
       @page = LandingPages::Page.find_by("path", params[:path])
     elsif params[:page_id]
       @page = LandingPages::Page.find(params[:page_id])
+    elsif SiteSetting.landing_page_as_home_enabled
+      @page = LandingPages::Page.find_by("path", SiteSetting.landing_page_as_home_path)
     end
 
     raise LandingPages::InvalidParameters.new if @page.blank?

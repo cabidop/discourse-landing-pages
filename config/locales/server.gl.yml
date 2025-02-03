@@ -36,3 +36,5 @@ gl:
   site_settings:
     landing_contact_email: "Destinatario do formulario de contacto nas páxinas de aterraxe."
     landing_authorized_extensions: "Tipos de arquivo permitidos nas páxinas de aterraxe."
+    landing_page_as_home_enabled: "Usar unha páxina de aterraxe como a páxina principal do sitio."
+    landing_page_as_home_path: "Ruta da páxina de aterraxe que usar como páxina principal."

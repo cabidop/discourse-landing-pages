@@ -5,6 +5,11 @@ plugins:
     default: "jpg|jpeg|png|woff|woff2|svg|eot|ttf|otf|gif|js|json"
     type: list
     list_type: compact
+  landing_page_as_home_enabled:
+    default: false
+    type: boolean
+  landing_page_as_home_path:
+    default: ''
   landing_redirect_to_homepages:
     default: false
     type: boolean
